@@ -1,0 +1,76 @@
+$primary-color: red;
+$secondary-color: green;
+$tertiary-color: blue;
+
+$border1: 2px solid green;
+$border2: 2px solid blue;
+$border3: 2px solid red;
+
+@function size($px) {
+  @return unquote(calc($px / 16px) + "rem");
+}
+
+%pagetitle {
+  color: green;
+  text-decoration: underline blue;
+}
+
+div {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  border: $border3;
+  padding: 10px;
+  gap: 10px;
+  width: fit-content;
+  height: fit-content;
+  max-width: 1440px;
+  margin: auto;
+
+  h1 {
+    @extend %pagetitle;
+  }
+
+  h2 {
+    @extend %pagetitle;
+    padding: 1rem;
+    border: $border3;
+  }
+
+  section {
+    display: flex;
+    padding: 10px;
+
+    article {
+      &:nth-child(odd) {
+        border: $border1;
+        color: $tertiary-color;
+        font-size: size(16px);
+        text-align: center;
+        padding: 10px;
+        box-sizing: border-box;
+      }
+
+      &:nth-child(even) {
+        border: $border1;
+        color: $primary-color;
+        padding: 10px;
+        text-align: center;
+        box-sizing: border-box;
+      }
+    }
+
+    &:last-child {
+      article {
+        border: $border2;
+        color: $secondary-color;
+        width: 100%;
+        text-align: center;
+        padding: 10px;
+        box-sizing: border-box;
+        font-size: size(24px);
+      }
+    }
+  }
+}
